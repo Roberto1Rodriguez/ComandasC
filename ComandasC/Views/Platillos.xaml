@@ -50,6 +50,7 @@
                                 <Label TextColor="White" FontAttributes="Bold"  Grid.Row="3"   Text="{Binding Descripcion}"/>
                         </Grid>
                         </Frame>
+                        
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
