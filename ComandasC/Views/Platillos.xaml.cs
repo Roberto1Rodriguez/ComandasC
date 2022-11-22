@@ -34,9 +34,7 @@ namespace ComandasC.Views
        
         }
 
-        private void agg_Clicked(object sender, EventArgs e)
-        {
 
-        }
+       
     }
 }

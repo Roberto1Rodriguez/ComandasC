@@ -7,11 +7,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace ComandasC.ViewModels
 {
     public class ComandasViewModel
     {
+        public ICommand agregarcommand { get; set; }
         public Comanda comanda { get; set; }
         public ObservableCollection<Producto> Productos { get; set; }
         public List<Producto> platillos { get; set; }
@@ -20,7 +22,7 @@ namespace ComandasC.ViewModels
         {
             comanda = new Comanda();
           
-            agregarcommand = new RelayCommand<Producto>(agregarproducto);
+            agregarcommand = new Command<Producto>(agregarproducto);
             Productos = new ObservableCollection<Producto>
           {
               new Producto
@@ -84,7 +86,6 @@ namespace ComandasC.ViewModels
             bebida = new List<Producto>(Productos.Where(x => x.tipo == Tipo.bebida));
 
         }
-        public ICommand agregarcommand;
         public void agregarproducto(Producto p)
         {
             if (comanda.Pedidos[p.Nombre]!=null)

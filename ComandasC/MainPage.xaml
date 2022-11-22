@@ -6,5 +6,6 @@
 
     <local:Platillos></local:Platillos>
     <local:Bebidas></local:Bebidas>
+    <local:ComandaView></local:ComandaView>
 
 </TabbedPage>
