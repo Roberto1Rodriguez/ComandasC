@@ -55,7 +55,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
        
-            <ImageButton Command="{Binding agregarcommand"} IsVisible="false" x:Name="agg" Grid.Column="1" Grid.Row="2" Source="Agregar.png"  BackgroundColor="Transparent" Scale="1.2" Margin="60,0,0,0"/>
+            <ImageButton Command="{Binding agregarcommand}" IsVisible="false" x:Name="agg" Grid.Column="1" Grid.Row="2" Source="Agregar.png"  BackgroundColor="Transparent" Scale="1.2" Margin="60,0,0,0"/>
        
       
     </Grid>

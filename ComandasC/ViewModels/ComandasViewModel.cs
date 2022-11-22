@@ -19,6 +19,7 @@ namespace ComandasC.ViewModels
         public ComandasViewModel()
         {
             comanda = new Comanda();
+          
             agregarcommand = new RelayCommand<Producto>(agregarproducto);
             Productos = new ObservableCollection<Producto>
           {
