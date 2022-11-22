@@ -8,15 +8,20 @@
     </ContentPage.BindingContext>
     <Grid BackgroundColor="#EEEEEE">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <CollectionView
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <CollectionView x:Name="col1" SelectionChanged="col2_SelectionChanged"
                     Grid.Row="1"
                     ItemsSource="{Binding bebida}"    
                     SelectionMode="Multiple"
-                    Margin="12, 0">
+                    Margin="10, 0"  Grid.ColumnSpan="2">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout 
                             Orientation="Vertical"
@@ -33,7 +38,7 @@
                                     <RowDefinition Height="150" />
                                     <RowDefinition Height="15" />
                                     <RowDefinition Height="15" />
-                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="80"/>
                                 </Grid.RowDefinitions>
                                 <Frame BackgroundColor="Black" Padding="3" BorderColor="Black" CornerRadius="5" IsClippedToBounds="True" HasShadow="True">
                                     <Image Grid.RowSpan="1" Aspect="Fill" Source="{Binding Imagen}" />
@@ -47,5 +52,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <ImageButton  IsVisible="false" x:Name="agg" Grid.Column="1" Grid.Row="2" Source="Agregar.png"  BackgroundColor="Transparent" Scale="1.2" Margin="60,0,0,0"/>
+
     </Grid>
 </ContentPage>

@@ -11,24 +11,31 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <CollectionView
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <CollectionView  x:Name="col" SelectionChanged="col_SelectionChanged"
                     Grid.Row="1"
                     ItemsSource="{Binding platillos}"    
                     SelectionMode="Multiple"
-                    Margin="12, 0">
+                    Margin="12, 0" Grid.ColumnSpan="2">
+        
             <CollectionView.ItemsLayout>
                 <GridItemsLayout 
                             Orientation="Vertical"
-                            Span="2" />
+                            Span="2"  />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HeightRequest="310">
-                        <Frame Padding="5" Margin="10" IsClippedToBounds="True" HasShadow="True" BackgroundColor="#749F82">
-            <Grid 
+                    <Grid   HeightRequest="310">
+                        <Frame    Padding="5" Margin="10" IsClippedToBounds="True" HasShadow="True" BackgroundColor="#749F82">
+            <Grid  
                 Margin="12, 0, 12, 0"
                 RowSpacing="0">
+                               
                 <Grid.RowDefinitions>
                 <RowDefinition Height="150" />
                 <RowDefinition Height="15" />
@@ -47,5 +54,10 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+       
+            <ImageButton Command="{Binding agregarcommand"} IsVisible="false" x:Name="agg" Grid.Column="1" Grid.Row="2" Source="Agregar.png"  BackgroundColor="Transparent" Scale="1.2" Margin="60,0,0,0"/>
+       
+      
     </Grid>
+   
 </ContentPage>

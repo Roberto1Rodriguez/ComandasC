@@ -17,5 +17,19 @@ namespace ComandasC.Views
             InitializeComponent();
             
         }
+
+        private void col2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (col1.SelectedItems.Count == 0)
+            {
+                agg.IsVisible = false;
+            }
+            else
+            {
+                agg.IsVisible = true;
+
+            }
+
+        }
     }
 }

@@ -1,21 +1,25 @@
 ﻿using ComandasC.Models;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 
 namespace ComandasC.ViewModels
 {
     public class ComandasViewModel
     {
+        public Comanda comanda { get; set; }
         public ObservableCollection<Producto> Productos { get; set; }
         public List<Producto> platillos { get; set; }
         public List<Producto> bebida { get; set; }
         public ComandasViewModel()
         {
-      
+            comanda = new Comanda();
+            agregarcommand = new RelayCommand<Producto>(agregarproducto);
             Productos = new ObservableCollection<Producto>
           {
               new Producto
@@ -78,6 +82,16 @@ namespace ComandasC.ViewModels
             platillos = new List<Producto>(Productos.Where(x => x.tipo == Tipo.platillo));
             bebida = new List<Producto>(Productos.Where(x => x.tipo == Tipo.bebida));
 
+        }
+        public ICommand agregarcommand;
+        public void agregarproducto(Producto p)
+        {
+            if (comanda.Pedidos[p.Nombre]!=null)
+            {
+                comanda.Pedidos[p.Nombre].Cantidad += 1;
+            }
+
+            comanda.Pedidos.Add(p.Nombre,p);
         }
        
     }

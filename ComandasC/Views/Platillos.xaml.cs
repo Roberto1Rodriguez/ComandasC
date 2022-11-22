@@ -16,7 +16,27 @@ namespace ComandasC.Views
         public Platillos()
         {
             InitializeComponent();
+          
         }
 
+        private void col_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            if(col.SelectedItems.Count==0)
+            {
+                agg.IsVisible = false;
+            }
+            else
+            {
+                agg.IsVisible = true;
+
+            }
+       
+        }
+
+        private void agg_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
