@@ -3,10 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComandasC.Views.ComandaView" Title="Comanda"
              xmlns:vm="clr-namespace:ComandasC.ViewModels">
-    <ContentPage.BindingContext>
-        <vm:ComandasViewModel></vm:ComandasViewModel>
-    </ContentPage.BindingContext>
-    <CollectionView ItemsSource="{Binding comanda.Pedidos}">
-        
-    </CollectionView>
+  
+    <StackLayout>
+        <Label Text="{Binding Comanda.total}"/>
+
+        <CollectionView  ItemsSource="{Binding Pedidos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label  TextColor="Black" Text="{Binding Nombre }"></Label>
+                        <Label  TextColor="Black" Text="{Binding Cantidad }"></Label>
+                        <Label Text="{Binding Precio}"></Label>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+      
 </ContentPage>

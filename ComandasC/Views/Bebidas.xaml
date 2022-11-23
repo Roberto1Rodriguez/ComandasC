@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComandasC.Views.Bebidas" Title="Bebidas" xmlns:vm="clr-namespace:ComandasC.ViewModels">
  
-    <ContentPage.BindingContext>
-        <vm:ComandasViewModel></vm:ComandasViewModel>
-    </ContentPage.BindingContext>
+  
     <Grid BackgroundColor="#EEEEEE">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -20,8 +18,8 @@
         <CollectionView x:Name="col1" SelectionChanged="col2_SelectionChanged"
                     Grid.Row="1"
                     ItemsSource="{Binding bebida}"    
-                    SelectionMode="Multiple"
-                    Margin="10, 0"  Grid.ColumnSpan="2">
+                    SelectionMode="Single"
+                    Margin="10, 0"  Grid.ColumnSpan="2" SelectedItem="{Binding Producto}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout 
                             Orientation="Vertical"
@@ -52,7 +50,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <ImageButton  IsVisible="false" x:Name="agg" Grid.Column="1" Grid.Row="2" Source="Agregar.png"  BackgroundColor="Transparent" Scale="1.2" Margin="60,0,0,0"/>
+        <ImageButton Command="{Binding agregarcommand }"  IsVisible="True" x:Name="agg" Grid.Column="1" Grid.Row="2" Source="Agregar.png"  BackgroundColor="Transparent" Scale="1.2" Margin="60,0,0,0"/>
 
     </Grid>
 </ContentPage>

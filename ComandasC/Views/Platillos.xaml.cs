@@ -24,7 +24,7 @@ namespace ComandasC.Views
             
             if(col.SelectedItems.Count==0)
             {
-                agg.IsVisible = false;
+                agg.IsVisible = true;
             }
             else
             {
@@ -34,6 +34,10 @@ namespace ComandasC.Views
        
         }
 
+        private void agg_Clicked(object sender, EventArgs e)
+        {
+            agg.BackgroundColor = Color.Blue;
+        }
 
        
     }

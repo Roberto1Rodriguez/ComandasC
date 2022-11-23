@@ -3,26 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComandasC.Views.Platillos" Title="Platillos"
              xmlns:vm="clr-namespace:ComandasC.ViewModels">
-    <ContentPage.BindingContext>
-        <vm:ComandasViewModel></vm:ComandasViewModel>
-    </ContentPage.BindingContext>
-    <Grid BackgroundColor="#EEEEEE">
+
+    <Grid BackgroundColor="Black">
+     
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="Auto"/>
+          
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <CollectionView  x:Name="col" SelectionChanged="col_SelectionChanged"
+       
+        <CollectionView BackgroundColor="AliceBlue"  x:Name="col" SelectionChanged="col_SelectionChanged"
                     Grid.Row="1"
                     ItemsSource="{Binding platillos}"    
-                    SelectionMode="Multiple"
-                    Margin="12, 0" Grid.ColumnSpan="2" SelectedItem="{Binding Productos}">
-        
+                    SelectionMode="Single" 
+                    Margin="10, 0,0,0" Grid.ColumnSpan="2" SelectedItem="{Binding Producto}">
+            
+                
             <CollectionView.ItemsLayout>
                 <GridItemsLayout 
                             Orientation="Vertical"
@@ -30,14 +31,14 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
+                    
                     <Grid   HeightRequest="310">
-                        
-                        <Frame    Padding="5" Margin="10" IsClippedToBounds="True" HasShadow="True" BackgroundColor="#749F82">
+                       
+                        <Frame Padding="5" Margin="10" HasShadow="True" BackgroundColor="#749F82">
                             
-            <Grid  
-                Margin="12, 0, 12, 0"
-                RowSpacing="0">
-                               
+                            <Grid  
+                Margin="12, 0, 12, 0">
+                            
                 <Grid.RowDefinitions>
                 <RowDefinition Height="150" />
                 <RowDefinition Height="15" />
@@ -45,7 +46,9 @@
                 <RowDefinition Height="100"/>
                             </Grid.RowDefinitions>
                                 <Frame BackgroundColor="Black" Padding="3" BorderColor="Black" CornerRadius="5" IsClippedToBounds="True" HasShadow="True">
-                            <Image Grid.RowSpan="1" Aspect="AspectFill" Source="{Binding Imagen}" />
+                                    <Image Grid.RowSpan="1" Aspect="AspectFill" Source="{Binding Imagen}">
+                                     
+                                    </Image>
                                     
                                 </Frame>
                 
@@ -64,8 +67,8 @@
             </CollectionView.ItemTemplate>
             
         </CollectionView>
-        <Button Command="{Binding agregarcommand}" CommandParameter="{Binding Source={x:Reference col}, Path=SelectedItems}"></Button>
-        <ImageButton Command="{Binding agregarcommand }"  IsVisible="false" x:Name="agg" Grid.Column="1" Grid.Row="2" Source="Agregar.png"  BackgroundColor="Transparent" Scale="1.2" Margin="60,0,0,0" />
+     
+        <ImageButton Command="{Binding agregarcommand }" Clicked="agg_Clicked"  IsVisible="true" x:Name="agg" Grid.Column="1" Grid.Row="2" Source="Agregar.png"  BackgroundColor="Transparent" Scale="1.2" Margin="60,0,0,0" />
        
       
     </Grid>

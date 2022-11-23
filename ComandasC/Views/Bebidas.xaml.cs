@@ -22,7 +22,7 @@ namespace ComandasC.Views
         {
             if (col1.SelectedItems.Count == 0)
             {
-                agg.IsVisible = false;
+                agg.IsVisible = true;
             }
             else
             {
