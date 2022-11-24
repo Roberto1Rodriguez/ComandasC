@@ -13,5 +13,6 @@ namespace ComandasC.Models
         public decimal total { get; set; }
 
         public string Fecha { get; set; }
+        public string Mesa { get; set; }    
     }
 }

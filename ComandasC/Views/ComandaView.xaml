@@ -5,8 +5,14 @@
              xmlns:vm="clr-namespace:ComandasC.ViewModels">
   
     <StackLayout>
-        <Label Text="{Binding Comanda.total}"/>
-        <Button Command="{Binding EnviarCommand}"></Button>
+        <Picker SelectedItem="{Binding Comanda.Mesa}" Title="Mesa">
+            <Picker.Items>
+                <x:String>Mesa 1</x:String>
+                <x:String>Mesa 2</x:String>
+            </Picker.Items>
+            
+        </Picker>
+       
         <CollectionView  ItemsSource="{Binding Pedidos}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -19,6 +25,8 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button Command="{Binding EnviarCommand}"></Button>
+        <Label Text="{Binding Comanda.total}"/>
     </StackLayout>
       
 </ContentPage>

@@ -21,24 +21,7 @@ namespace ComandasC.Views
 
         private void col_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            if(col.SelectedItems.Count==0)
-            {
-                agg.IsVisible = true;
-            }
-            else
-            {
-                agg.IsVisible = true;
-
-            }
-       
+           
         }
-
-        private void agg_Clicked(object sender, EventArgs e)
-        {
-            agg.BackgroundColor = Color.Blue;
-        }
-
-       
     }
 }
