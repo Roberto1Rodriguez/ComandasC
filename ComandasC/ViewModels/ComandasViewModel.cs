@@ -37,7 +37,7 @@ namespace ComandasC.ViewModels
         public List<Producto> bebida { get; set; }
         public ComandasViewModel()
         {
-            EnviarCommand = new Command<Comanda>(EnviarComanda);
+            EnviarCommand = new Command(EnviarComanda);
             Comanda = new Comanda();
             Comanda.Pedidos = new Dictionary<string, Producto>();    
         Producto= new Producto();
@@ -113,10 +113,10 @@ namespace ComandasC.ViewModels
 
         }
 
-        private async void EnviarComanda(Comanda co)
+        private async void EnviarComanda()
         {
-            
-                await cliente.Comanda(co);
+
+            await cliente.Comanda(Comanda);
             
            
         }
