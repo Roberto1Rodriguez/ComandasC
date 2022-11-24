@@ -6,7 +6,7 @@
   
     <StackLayout>
         <Label Text="{Binding Comanda.total}"/>
-
+        <Button Command="{Binding EnviarCommand}"></Button>
         <CollectionView  ItemsSource="{Binding Pedidos}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -14,6 +14,7 @@
                         <Label  TextColor="Black" Text="{Binding Nombre }"></Label>
                         <Label  TextColor="Black" Text="{Binding Cantidad }"></Label>
                         <Label Text="{Binding Precio}"></Label>
+                        
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
