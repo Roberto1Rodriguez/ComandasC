@@ -4,7 +4,7 @@
              x:Class="ComandasC.Views.Platillos" Title="Platillos"
              xmlns:vm="clr-namespace:ComandasC.ViewModels">
     <ContentPage.Resources>
-        <Style TargetType="Frame">
+        <Style TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
@@ -38,7 +38,7 @@
                     
                     <Grid HeightRequest="190" x:Name="gridcomida">
 
-                        <Frame BorderColor="#EAB73B" CornerRadius="10"  Margin="6" HasShadow="True">
+                        <Frame  BorderColor="#EAB73B" CornerRadius="10"  Margin="6" HasShadow="True">
 
                             <Grid>
                                 <Grid.RowDefinitions>
