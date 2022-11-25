@@ -22,6 +22,7 @@ namespace ComandasC.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
         public int CantidadT { get; set; }
+        public string Error { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand AgregarCommand { get; set; }
       public ICommand EnviarCommand { get; set; }
@@ -113,39 +114,48 @@ namespace ComandasC.ViewModels
             bebida = new List<Producto>(Productos.Where(x => x.tipo == Tipo.bebida));
 
         }
-
+        public int id = 0;
         private async void EnviarComanda()
         {
+            Error = "";
+            if (Comanda.Mesa != null)
+            {
+                id++;
+                Comanda.Id = id;
 
-            Comanda.Fecha = DateTime.Now.ToShortTimeString();
-            await cliente.Comanda(Comanda);
-            Comanda = new Comanda();
-            Pedidos = null;
-            Lanzar(nameof(Pedidos));
-            Lanzar(nameof(Comanda));
-            Comanda = new Comanda();
-            Comanda.Pedidos = new Dictionary<string, Producto>();
+                Comanda.Hora = DateTime.Now.ToShortTimeString();
+                await cliente.Comanda(Comanda);
+
+                Comanda = new Comanda();
+                Pedidos = null;
+                Lanzar(nameof(Pedidos));
+                Lanzar(nameof(Comanda));
+
+                Comanda.Pedidos = new Dictionary<string, Producto>();
+            }
+            else
+            {
+
+                Error = "Seleccione la mesa del pedido";
+                Lanzar(nameof(Error));
+            }
 
         }
+
+        
         public void agregarproducto()
         {
             
             if (Comanda.Pedidos.ContainsKey(Producto.Nombre))
             {
                 Comanda.Pedidos[Producto.Nombre].Cantidad += 1;
-                Comanda.total += Producto.Precio;
-               
-
+                Comanda.Total += Producto.Precio;
             }
             else
             {
                 Comanda.Pedidos.Add(Producto.Nombre, Producto);
-                Comanda.total += Producto.Precio;
-                CantidadT += Producto.Cantidad;
+                Comanda.Total += Producto.Precio;
 
-               
-              
-             
             }
             Pedidos = Comanda.Pedidos.Values.ToList();
             Lanzar(nameof(Comanda));

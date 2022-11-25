@@ -8,6 +8,7 @@ using ComandasC.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace ComandasC.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -16,9 +17,18 @@ namespace ComandasC.Views
         public Platillos()
         {
             InitializeComponent();
+           
+            
+
           
         }
 
+     
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            ComandasViewModel comandas = new ComandasViewModel();
+            comandas.CantidadT++;
+        }
     }
 }
