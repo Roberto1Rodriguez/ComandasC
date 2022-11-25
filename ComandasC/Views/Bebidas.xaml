@@ -11,7 +11,7 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="#EA9C11" />
+                                        Value="#FF6324" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -20,6 +20,11 @@
         </Style>
     </ContentPage.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
 
 
@@ -64,7 +69,7 @@
 
         </CollectionView>
 
-        <Button Grid.ColumnSpan="2"  Command="{Binding AgregarCommand}" Text="Añadir a la orden" BorderColor="#2b3c3c" FontAttributes="Bold" BackgroundColor="Gray" CornerRadius="25" TextColor="White" HeightRequest="50" Margin="10,0,10,0" VerticalOptions="End"></Button>
+        <Button Grid.ColumnSpan="2"  Command="{Binding AgregarCommand}" Text="Añadir a la orden" BorderColor="#2b3c3c" FontAttributes="Bold" BackgroundColor="#253333" CornerRadius="25" TextColor="White" HeightRequest="50" Margin="10,0,10,0" VerticalOptions="End"></Button>
 
 
     </Grid>

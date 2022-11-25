@@ -23,12 +23,11 @@ namespace ComandasC.Views
           
         }
 
-     
+    
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void col_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComandasViewModel comandas = new ComandasViewModel();
-            comandas.CantidadT++;
+           
         }
     }
 }

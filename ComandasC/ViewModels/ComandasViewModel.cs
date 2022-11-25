@@ -118,34 +118,35 @@ namespace ComandasC.ViewModels
         private async void EnviarComanda()
         {
             Error = "";
-            if (Comanda.Mesa != null)
+            Lanzar(nameof(Error));
+            if (Comanda.Total != 0)
             {
-                id++;
-                Comanda.Id = id;
-
-                Comanda.Hora = DateTime.Now.ToShortTimeString();
-                await cliente.Comanda(Comanda);
-
-                Comanda = new Comanda();
-                Pedidos = null;
-                Lanzar(nameof(Pedidos));
-                Lanzar(nameof(Comanda));
-
-                Comanda.Pedidos = new Dictionary<string, Producto>();
-            }
+                if (Comanda.Mesa != null)
+                {
+                    id++;
+                    Comanda.Id = id;
+                    Comanda.Hora = DateTime.Now.ToShortTimeString();
+                    await cliente.Comanda(Comanda);
+                    Comanda = new Comanda();
+                    Pedidos = null;
+                    Lanzar(nameof(Pedidos));
+                    Lanzar(nameof(Comanda));
+                    Comanda.Pedidos = new Dictionary<string, Producto>();
+                }
+                else
+                {
+                    Error = "Seleccione la mesa del pedido";
+                    Lanzar(nameof(Error));
+                }
+	}  
             else
             {
-
-                Error = "Seleccione la mesa del pedido";
+                Error = "La comanda no se pude enviar vacia";
                 Lanzar(nameof(Error));
-            }
-
-        }
-
-        
+            }           
+        }    
         public void agregarproducto()
-        {
-            
+        {            
             if (Comanda.Pedidos.ContainsKey(Producto.Nombre))
             {
                 Comanda.Pedidos[Producto.Nombre].Cantidad += 1;
@@ -159,8 +160,7 @@ namespace ComandasC.ViewModels
             }
             Pedidos = Comanda.Pedidos.Values.ToList();
             Lanzar(nameof(Comanda));
-            Lanzar(nameof(Pedidos));
-         
+            Lanzar(nameof(Pedidos));         
         }
         }
        

@@ -12,7 +12,7 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="#EA9C11" />
+                                        Value="#FF6324" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -27,29 +27,28 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-       
         <CollectionView BackgroundColor="AliceBlue"  x:Name="col"
                   
                     ItemsSource="{Binding platillos}"    
                     SelectionMode="Single"  
-                    Margin="0, 0,0,0" Grid.ColumnSpan="2" SelectedItem="{Binding Producto}">
-            
+                    Margin="0, 0,0,0" Grid.ColumnSpan="2" SelectedItem="{Binding Producto}" >
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    
-                    <Grid HeightRequest="190" >
+
+                    <Grid HeightRequest="175" >
 
                         <Frame  BorderColor="#EAB73B" CornerRadius="10"  Margin="6" HasShadow="True">
 
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="0" />
-                                    <RowDefinition Height="20" />
-                            </Grid.RowDefinitions>
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="16" />
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
-                                 
+
                                 </Grid.ColumnDefinitions>
                                 <Frame Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" BackgroundColor="Black" Padding="5" CornerRadius="5">
                                     <Image  Aspect="AspectFill" Source="{Binding Imagen}">
@@ -59,24 +58,12 @@
                                 <Label  Grid.Row="3" FontAttributes="Bold" Grid.Column="1" Text="{Binding Precio , StringFormat='{0:C0}'}"/>
                                 <Label Grid.Column="1"  Grid.Row="2"   Text="{Binding Descripcion}"/>
                             </Grid>
-                            
                         </Frame>
-                       
                     </Grid>
-                    
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            
         </CollectionView>
-        <Grid Grid.ColumnSpan="2" Grid.Row="1" HeightRequest="50">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="270"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Clicked="Button_Clicked"  Command="{Binding AgregarCommand}" Text="Añadir a la orden" BorderColor="#2b3c3c" FontAttributes="Bold" BackgroundColor="Gray" CornerRadius="25" TextColor="White" HeightRequest="50" Margin="10,0,10,0" VerticalOptions="End"></Button>
-         
-           
-        </Grid>
+        <Button  Grid.ColumnSpan="2" x:Name="btnAgregar"  Command="{Binding AgregarCommand}" Text="Añadir a la orden" BorderColor="#2b3c3c" FontAttributes="Bold" BackgroundColor="#253333" CornerRadius="25" TextColor="White" HeightRequest="50" Margin="10,0,10,0" VerticalOptions="End"></Button>
 
     </Grid>
    

@@ -8,9 +8,11 @@
     
         <Grid.RowDefinitions>
             <RowDefinition Height="0.9*"/>
-            <RowDefinition Height="0.07*"/>
+            <RowDefinition Height="0.06*"/>
         </Grid.RowDefinitions>
+        <Image Source="sushicomanda"></Image>
     <StackLayout >
+        
         <StackLayout> 
             <Grid  BackgroundColor="Transparent">
                     <Label FontAttributes="Bold"  FontSize="Medium"  TextColor="Black" HorizontalOptions="Center" Text="Producto"></Label>
@@ -19,7 +21,7 @@
 
                 </Grid >
             <ScrollView>
-        <CollectionView HeightRequest="400" ItemsSource="{Binding Pedidos}">
+        <CollectionView HeightRequest="265" ItemsSource="{Binding Pedidos}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                                 <Grid Margin="5">
@@ -32,20 +34,19 @@
         </CollectionView>
             </ScrollView>
                 <Label Text="Notas:" FontSize="Medium"></Label>
-            <Entry Text="{Binding Comanda.Notas}" HeightRequest="100" VerticalTextAlignment="Start" ></Entry>
-                <Label Text="Total"></Label>
-                <Label Text="{Binding Comanda.Total}"></Label>
+            <Editor  Text="{Binding Comanda.Notas}" HeightRequest="100"  ></Editor>
+                <Label Text="Total" FontSize="Medium"></Label>
+                <Label Text="{Binding Comanda.Total,StringFormat='{0:C0}'}" FontSize="Medium" FontAttributes="Bold"></Label>
                 <Picker Margin="0,0,0,0" Grid.Column="1"   SelectedItem="{Binding Comanda.Mesa}" Title="Mesa">
                     <Picker.Items>
                         <x:String>Mesa 1</x:String>
                         <x:String>Mesa 2</x:String>
                     </Picker.Items>
-                    
                 </Picker>
-                <Label Text="{Binding Error}"></Label>
+                <Label Text="{Binding Error}" FontSize="15" FontAttributes="Bold" TextColor="Black"></Label>
             </StackLayout>
         
     </StackLayout>
-        <Button  Grid.Row="1" x:Name="btnenviar"   Command="{Binding EnviarCommand}" Text="Añadir a la orden" BorderColor="#2b3c3c" FontAttributes="Bold" BackgroundColor="Gray" CornerRadius="25" TextColor="White"  Margin="10,0,10,0"></Button>
+        <Button  Grid.Row="1" x:Name="btnenviar"   Command="{Binding EnviarCommand}" Text="Enviar Comanda" BorderColor="#2b3c3c" FontAttributes="Bold" BackgroundColor="#253333" CornerRadius="25" TextColor="White"   Margin="10,0,10,0"></Button>
     </Grid>
 </ContentPage>

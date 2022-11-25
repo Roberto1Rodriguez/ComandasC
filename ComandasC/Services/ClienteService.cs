@@ -13,7 +13,7 @@ namespace ComandasC.Services
         HttpClient cliente = new HttpClient();
         public ClienteService()
         {
-            cliente.BaseAddress = new Uri("https://cd50-2806-108e-21-5a7b-7df8-8ac8-ecc1-5193.ngrok.io/Comandas/");
+            cliente.BaseAddress = new Uri("https://0903-187-209-230-181.ngrok.io/Comandas/");
         }
 
         public async Task Comanda(Comanda c)
