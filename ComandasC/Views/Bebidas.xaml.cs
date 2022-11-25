@@ -18,18 +18,7 @@ namespace ComandasC.Views
             
         }
 
-        private void col2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (col1.SelectedItems.Count == 0)
-            {
-                agg.IsVisible = true;
-            }
-            else
-            {
-                agg.IsVisible = true;
-
-            }
+      
 
         }
     }
-}

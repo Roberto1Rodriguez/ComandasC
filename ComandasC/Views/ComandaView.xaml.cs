@@ -12,9 +12,12 @@ namespace ComandasC.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ComandaView : ContentPage
 	{
-		public ComandaView ()
+		public ComandaView()
 		{
-			InitializeComponent ();
+
+			InitializeComponent();
 		}
+
+
 	}
 }

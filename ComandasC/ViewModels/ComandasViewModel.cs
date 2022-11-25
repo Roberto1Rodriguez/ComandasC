@@ -21,8 +21,9 @@ namespace ComandasC.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+        public int CantidadT { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
-        public ICommand agregarcommand { get; set; }
+        public ICommand AgregarCommand { get; set; }
       public ICommand EnviarCommand { get; set; }
         public List<Producto> Pedidos { get; set; }      
         private Producto producto;
@@ -41,7 +42,7 @@ namespace ComandasC.ViewModels
             Comanda = new Comanda();
             Comanda.Pedidos = new Dictionary<string, Producto>();    
         Producto= new Producto();
-            agregarcommand = new Command(agregarproducto);
+            AgregarCommand = new Command(agregarproducto);
             Productos = new ObservableCollection<Producto>
           {
               new Producto
@@ -116,9 +117,15 @@ namespace ComandasC.ViewModels
         private async void EnviarComanda()
         {
 
+            Comanda.Fecha = DateTime.Now.ToShortTimeString();
             await cliente.Comanda(Comanda);
-            
-           
+            Comanda = new Comanda();
+            Pedidos = null;
+            Lanzar(nameof(Pedidos));
+            Lanzar(nameof(Comanda));
+            Comanda = new Comanda();
+            Comanda.Pedidos = new Dictionary<string, Producto>();
+
         }
         public void agregarproducto()
         {
@@ -127,18 +134,23 @@ namespace ComandasC.ViewModels
             {
                 Comanda.Pedidos[Producto.Nombre].Cantidad += 1;
                 Comanda.total += Producto.Precio;
+               
 
             }
             else
             {
                 Comanda.Pedidos.Add(Producto.Nombre, Producto);
                 Comanda.total += Producto.Precio;
+                CantidadT += Producto.Cantidad;
+
+               
               
              
             }
             Pedidos = Comanda.Pedidos.Values.ToList();
             Lanzar(nameof(Comanda));
             Lanzar(nameof(Pedidos));
+         
         }
         }
        

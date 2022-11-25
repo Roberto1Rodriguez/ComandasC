@@ -3,30 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComandasC.Views.ComandaView" Title="Comanda"
              xmlns:vm="clr-namespace:ComandasC.ViewModels">
-  
-    <StackLayout>
-        <Picker SelectedItem="{Binding Comanda.Mesa}" Title="Mesa">
+
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.RowSpan="3" Grid.ColumnSpan="3" Source="sushicomanda.png" Aspect="Fill" Margin="0,0,0,51"></Image>
+        <Picker Margin="0,0,0,0" Grid.Column="1" Grid.Row="2" HeightRequest="50" SelectedItem="{Binding Comanda.Mesa}" Title="Mesa">
             <Picker.Items>
                 <x:String>Mesa 1</x:String>
                 <x:String>Mesa 2</x:String>
             </Picker.Items>
-            
         </Picker>
-       
-        <CollectionView  ItemsSource="{Binding Pedidos}">
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold">Productos</Label>
+            <Label FontSize="Medium" HorizontalTextAlignment="Center"  TextColor="Black" FontAttributes="Bold" Grid.Column="1" >Cantidad</Label>
+            <Label FontSize="Medium" HorizontalTextAlignment="Center"  TextColor="Black" FontAttributes="Bold" Grid.Column="2">Precio</Label>
+        </Grid>
+        <CollectionView Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="1"  ItemsSource="{Binding Pedidos}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout>
-                        <Label  TextColor="Black" Text="{Binding Nombre }"></Label>
-                        <Label  TextColor="Black" Text="{Binding Cantidad }"></Label>
-                        <Label Text="{Binding Precio}"></Label>
-                        
-                    </StackLayout>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                       
+                            <Label Grid.Column="0" Grid.RowSpan="2" FontSize="Large"  TextColor="Black" Text="{Binding Nombre }"></Label>
+                        <Label FontAttributes="Bold" Margin="0,0,0,0" HorizontalTextAlignment="Center" Grid.Column="1"   TextColor="Black" Text="{Binding Cantidad }"></Label>
+                        <Label FontAttributes="Bold" HorizontalTextAlignment="End" Grid.Column="2" Margin="0,0,50,0" Text="{Binding Precio,StringFormat='{0:C0}'}"></Label>
+                            </Grid>
+                       
+                   
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Command="{Binding EnviarCommand}"></Button>
-        <Label Text="{Binding Comanda.total}"/>
-    </StackLayout>
+       
+        <Button Grid.ColumnSpan="3"  x:Name="btnenviar" Grid.Row="2"  Command="{Binding EnviarCommand}" Text="Añadir a la orden" BorderColor="#2b3c3c" FontAttributes="Bold" BackgroundColor="Gray" CornerRadius="25" TextColor="White"  Margin="10,0,10,0" VerticalOptions="End">
+          
+        </Button>
+      
+    </Grid>
       
 </ContentPage>

@@ -19,9 +19,6 @@ namespace ComandasC.Views
           
         }
 
-        private void col_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-           
-        }
+
     }
 }
